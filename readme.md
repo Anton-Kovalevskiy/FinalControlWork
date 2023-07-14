@@ -11,10 +11,54 @@
 
 ## Процесс выполнения:
 - Создание [репозитория][1] на GitHub.
-- Создание блок-схемы алгоритма.
-- Написание [программы](Program.cs), которая решает поставленную задачу.
+- Создание [блок-схемы](/Рисунок%20блок-схемы%20(метод%20формирования%20искомого%20массива).jpg) алгоритма.
+- Написание файла [программы](Program.cs), которая решает поставленную задачу.
 - Оформление текстового описания решения (файл *README.md*).
 - При выполнении работы был использован контроль версий, а также был добавлен файл *.gitignore*.
+
+### Код программы:
+
+``` c#
+int Parameters (string message)                    
+{
+    Console.Write(message);
+    int result = Convert.ToInt32(Console.ReadLine());
+    return (result);
+}
+
+string [] FillArray (int n)                   
+{
+    Console.WriteLine($"Введите {n} элементов массива через пробел:");
+    string? arrayString = Console.ReadLine();
+    string [] array = arrayString.Split(' ');
+    return (array);
+}
+
+void NewArray (string [] array)         
+{
+    string [] newArray = new string [array.Length];
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array [i].Length <= 3)
+        {
+            newArray [count] = array [i];
+            count ++; 
+        } 
+    }
+    Console.Write("Получен массив: ");
+    for (int i = 0; i < count; i++)
+    {
+        Console.Write($"[{newArray[i]}]");
+    }
+}
+
+string mes = "Введите количество элементов массива -> ";
+int n = Parameters(mes);
+string [] array = FillArray (n);
+Console.WriteLine("Исходный массив: [" + String.Join("] [", array) + "]");
+NewArray(array);
+```
 
 
 
